@@ -1,13 +1,12 @@
 ---
-  - name: Provision an EC2 Instance
-    hosts: localhost
+ -  hosts: localhost
     connection: local
-    gather_facts: False
+  #  gather_facts: False
     vars:
       keypair: windows
       instance_type: t2.micro
       image: ami-02da3a138888ced85
-      region: us-east-1a
+      region: us-east-1
     tasks:
     - name: Launch instance
       ec2:
