@@ -3,7 +3,7 @@
     connection: local
     gather_facts: False
     vars:
-      keypair: windows
+      keypair: mykeypair
       instance_type: t2.micro
       image: ami-02da3a138888ced85
       region: us-east-1
