@@ -14,6 +14,7 @@ pipeline {
         Ecr-ecs-image.push()
       }
       
+      
     }
   }
 }
