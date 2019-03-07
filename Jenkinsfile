@@ -12,7 +12,7 @@ steps {
 withDockerRegistry(credentialsId: 'ecr:us-east-1:AWS_ECR-ID', url: 'http://485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo') 
   {
 //docker.build('485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplication:latest')
-build name: 'spring:latest', path: '.'
+buildImage name: 'spring:latest', path: '.'
 // tagImage name: 'spring:latest', tag: '485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplcation:latest'
 sh "docker tag spring:latest 485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest"
 }
