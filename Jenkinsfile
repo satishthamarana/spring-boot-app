@@ -9,20 +9,20 @@ checkout scm
 }
 stage('Build docker image') {
 steps {
-withDockerRegistry(credentialsId: 'ecr:ap-south-1:AWS_vijay', url: 'http://358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation') {
-//docker.build('358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplication:latest')
+withDockerRegistry(credentialsId: 'ecr:us-east-1:AWS_ECR-ID', url: '485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo') {
+//docker.build('485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplication:latest')
 buildImage name: 'spring:latest', path: '.'
-// tagImage name: 'spring:latest', tag: '358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation:latest'
-sh "docker tag spring:latest 358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation:latest"
+// tagImage name: 'spring:latest', tag: '485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplcation:latest'
+sh "docker tag spring:latest 485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest"
 }
 }
 }
 stage('publish docker image to ecr') {
 steps {
-withDockerRegistry(credentialsId: 'ecr:ap-south-1:AWS_vijay', url: 'http://358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation') {
-// docker.image('358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplication:latest').push(latest)
-// pushImage name: '358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation', tag: 'latest'
-sh "docker push 358537675364.dkr.ecr.ap-south-1.amazonaws.com/springbootapplcation:latest"
+withDockerRegistry(credentialsId: 'ecr:us-east-1:AWS_ECR-ID', url: '485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo') {
+// docker.image('485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplication:latest').push(latest)
+// pushImage name: '485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootapplcation', tag: 'latest'
+sh "docker push 485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest"
 }
 }
 }
