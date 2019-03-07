@@ -26,7 +26,7 @@ sh "docker push 485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:late
 }
 }
 }
-stage("creating task definition and task for springboot cluster"){
+stage('creating task definition and task for springboot cluster'){
 steps{
 ansiblePlaybook become: true, playbook: 'ecs.yaml'
 }
