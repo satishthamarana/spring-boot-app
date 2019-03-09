@@ -1,6 +1,6 @@
 ---
 - name: create ecs and task definition
-hosts: ansible-server
+ hosts: ansible-server
 connection: local
 gather_facts: False
 tasks:
