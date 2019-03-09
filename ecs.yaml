@@ -2,6 +2,7 @@
   - name: create ecs and task definition
     hosts: ansible-server
     become: true
+    become_method: sudo
     connection: local
     gather_facts: False
     tasks:
