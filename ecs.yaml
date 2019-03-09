@@ -1,28 +1,27 @@
 ---
- - hosts: ansible-server
-   name: create ecs and task definition
-   connection: local
-   gather_facts: False
-   tasks:
-   - name: Create task definition
-     ecs_taskdefinition:
-     family: springboot
-     region: us-east-1
-     containers:
-   - name: springBootApplication
-     essential: true
-     image: "485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest"
-     portMappings:
-   - containerPort: 8080
-     hostPort: 8080
-     cpu: 512
-     memory: 1024
-     state: present
-   - name: create task for cluster
-     ecs_task:
-     operation: run
-     cluster: springBootCluster
-     task_definition: springboot
-     count: 1
-     started_by: ansible_user
-     register: task_output
+  - name: create ecs and task definition
+    hosts: ansible-server
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: Create task definition
+      ecs_taskdefinition:
+        family: springboot
+        containers:
+        - name: springBootApplication
+          essential: true
+          image: "485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest" 
+          portMappings:
+          - containerPort: 8080
+            hostPort: 8080
+          cpu: 512
+          memory: 1024
+          state: present
+    - name: create task for cluster
+      ecs_task:
+        operation: run
+        cluster: springBootCluster
+        task_definition: springboot
+        count: 1
+        started_by: ansible_user
+      register: task_output
