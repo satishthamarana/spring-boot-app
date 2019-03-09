@@ -10,7 +10,7 @@
         containers:
         - name: springBootApplication
           essential: true
-          image: "485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo" 
+          image: "485069714813.dkr.ecr.us-east-1.amazonaws.com/springbootrepo:latest" 
           portMappings:
           - containerPort: 8080
             hostPort: 8080
